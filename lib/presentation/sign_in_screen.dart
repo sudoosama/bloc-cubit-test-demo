@@ -58,7 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 MyImages.bgImage,
                 height: MyMediaQuery.height(context),
                 width: MyMediaQuery.width(context),
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
               ListView(
                 padding: MyScreenSizing.screenPadding(T: 30),
@@ -87,6 +87,7 @@ class _SignInScreenState extends State<SignInScreen> {
           isLoading = state.isLoading; // Set isLoading based on the state
         }
         return MyAnimatedLoaderButton(
+          textColor: Colors.black,
           margin: EdgeInsets.zero,
           loader: isLoading,
           onPressed: () async {

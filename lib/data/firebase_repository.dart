@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_new/constant/log_print.dart';
 import 'package:demo_new/models/pokemon_parsing_model.dart';
+import 'package:demo_new/utils/preference_utils.dart';
 import 'package:demo_new/widget/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +12,10 @@ class FirebaseRepository {
 
   Future<void> addToFavorites(BuildContext context,PokemonResultModel pokemon) async {
     try {
-      await _favoritesCollection.doc(pokemon.name).set({
+      final userId = await PreferenceUtils.getString(PrefKey.USERTOKEN);
+      print('userId: $userId');
+      final userDocRef = _favoritesCollection.doc(userId);
+      await userDocRef.collection('pokemons').doc(pokemon.name).set({
         'name': pokemon.name,
         'url': pokemon.url,
         'isFav': pokemon.isFav,

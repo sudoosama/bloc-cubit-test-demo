@@ -14,13 +14,15 @@ class MyAppBars {
         child: Row(
           children: [
             const SizedBox(width: 10),
-            const Icon(Icons.masks,                color: Colors.white,
+            const Icon(
+              Icons.masks,
+              color: Colors.black,
             ),
             const SizedBox(width: 15),
             Text(
               title,
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 19,
               ),
             ),

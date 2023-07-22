@@ -14,6 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'logic/cubit_sign_in/sign_in_cubit.dart';
 
+String USERTOKEN = '';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   bool userLoggedIn = await PreferenceUtils.isLoggedIn();
