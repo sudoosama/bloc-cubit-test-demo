@@ -21,19 +21,25 @@ class _PokemonListViewScreenState extends State<PokemonListViewScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PokemonListCubit>(
-      create: (context) =>PokemonListCubit(context,
+      create: (context) => PokemonListCubit(context,
           repository: PokemonListModel(
             count: 0,
             results: [],
           )),
       child: Scaffold(
         appBar: AppBar(
-          title:
-               Text('Pokemon List'.toUpperCase(),),
+          title: Text(
+            'Pokemon List'.toUpperCase(),
+          ),
           actions: [
-            IconButton(onPressed: (){
-              _logout(context);
-            }, icon: const Icon(Icons.shutter_speed_sharp))
+            IconButton(
+                onPressed: () {
+                  _logout(context);
+                },
+                icon: const Icon(
+                  Icons.shutter_speed_sharp,
+                  color: Colors.white,
+                ))
           ],
         ),
         body: BlocBuilder<PokemonListCubit, PokemonState>(
@@ -80,9 +86,10 @@ class _PokemonListViewScreenState extends State<PokemonListViewScreen> {
               style: const TextStyle(color: Colors.black)),
           trailing: IconButton(
             onPressed: () {
-              context
-                  .read<PokemonListCubit>()
-                  .toggleFavorite(context,pokemonList.results[index],);
+              context.read<PokemonListCubit>().toggleFavorite(
+                    context,
+                    pokemonList.results[index],
+                  );
             },
             icon: Icon(
               Icons.favorite,
@@ -101,8 +108,8 @@ class _PokemonListViewScreenState extends State<PokemonListViewScreen> {
       PreferenceUtils.clearSharedPref();
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context)=>const SignInScreen()),
-            (route) => false,
+        MaterialPageRoute(builder: (context) => const SignInScreen()),
+        (route) => false,
       );
     } catch (e) {
       'Error during logout: $e'.log();
