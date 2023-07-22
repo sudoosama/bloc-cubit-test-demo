@@ -1,12 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo_new/main.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_new/models/pokemon_parsing_model.dart';
 
-class FavoritePokemonListScreen extends StatelessWidget {
-  final CollectionReference _favoritesCollection =
-  FirebaseFirestore.instance.collection('favorites');
+class FavoritePokemonListScreen extends StatefulWidget {
 
    FavoritePokemonListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FavoritePokemonListScreen> createState() => _FavoritePokemonListScreenState();
+}
+
+class _FavoritePokemonListScreenState extends State<FavoritePokemonListScreen> {
+  final CollectionReference _favoritesCollection =
+  FirebaseFirestore.instance.collection('favorites');
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,10 @@ class FavoritePokemonListScreen extends StatelessWidget {
         title:  Text('Favorite Pokemon List'.toUpperCase(),),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _favoritesCollection.snapshots(),
+        stream: _favoritesCollection
+            .doc(USERTOKEN)
+            .collection('pokemons')
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());

@@ -1,10 +1,11 @@
+import 'package:demo_new/main.dart';
 import 'package:demo_new/presentation/home_screen.dart';
+import 'package:demo_new/utils/preference_utils.dart';
 import 'package:flutter/material.dart';
 
 import 'favourite_screen.dart';
 
 class HomeBottomNav extends StatefulWidget {
-
   const HomeBottomNav({
     Key? key,
   }) : super(key: key);
@@ -14,6 +15,11 @@ class HomeBottomNav extends StatefulWidget {
 }
 
 class _HomeBottomNavState extends State<HomeBottomNav> {
+  @override
+  void initState() {
+    getUserToken();
+    super.initState();
+  }
 
   int _currentIndex = 0;
 
@@ -46,5 +52,9 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
         ],
       ),
     );
+  }
+
+  void getUserToken() async {
+    USERTOKEN = await PreferenceUtils.getString(PrefKey.USERTOKEN);
   }
 }

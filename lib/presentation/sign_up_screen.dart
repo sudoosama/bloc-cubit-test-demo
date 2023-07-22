@@ -65,7 +65,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 MyImages.bgImage,
                 height: MyMediaQuery.height(context),
                 width: MyMediaQuery.width(context),
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
               ListView(
                 padding: MyScreenSizing.screenPadding(T: 30),
@@ -95,6 +95,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       return MyAnimatedLoaderButton(
         margin: EdgeInsets.zero,
         loader: isLoading,
+        textColor: Colors.black,
         onPressed: () async {
           if (_registrationFormKey.currentState!.validate()) {
             final isSuccess = await context.read<SignUpCubit>().register(

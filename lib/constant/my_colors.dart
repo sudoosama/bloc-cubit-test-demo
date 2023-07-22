@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  static const Color primaryColor = Color(0xFF89C438);
-  static const Color primaryColor2 = Color(0xFF89C438);
-  static const Color primaryDark = Color(0xFF59861A);
+  static const Color primaryColor = Color(0xFFFFD700); // Yellow color
+  static const Color primaryColor2 = Color(0xFFFFD700); // Yellow color
+  static const Color primaryDark = Color(0xFFFF4500); // Reddish-orange color
   static const Color lightGreen = Color(0xFFF2FFE8);
   static const Color sliderGreen = Color(0xFFD5ECC8);
-  static const Color lightGreen2 = Color(0xFFCEFC7D);
+  static const Color lightGreen2 = Color(0xFFFFD700);
   static const Color secondaryColor = Colors.white;
   static const Color white = Colors.white;
   static Color transparent = Colors.transparent.withOpacity(0);
